@@ -9,6 +9,7 @@ Note:  These example use the MQTT topics as defined in the fm-receiver source co
 |File Name|Contents / Use
 |---------|--------|
 |automation_scripts.yaml|Example automations and scripts related to controlling the receiver
+|dashboard.yaml|YAML to create the sample dashboard shown below
 |helpers.yaml|Helper entities, such as input numbers that can be used in a dashboard
 |mqtt_entities.yaml|Entites such as sensors and switches for the FM receiver
 
