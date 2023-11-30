@@ -1,0 +1,118 @@
+# ===========================================
+#  Example automations and scripts for the
+#  SI4703 FM Receiver
+#    - These could also be created via the UI
+# ===========================================
+
+# =======================
+#  Automations
+# =======================
+automation:
+  - alias: FM Receiver Frequency Change
+    # Update Input Number
+    id: 21a5d81b-d76b-4d2a-9ddd-c78c74b73122
+    mode: single
+    max_exceeded: silent
+    trigger:
+      platform: state
+      entity_id: sensor.fm_receiver_raw_frequency
+    action: 
+      - service: input_number.set_value
+        target:
+          entity_id: input_number.fm_receiver_frequency
+        data:
+          value: "{{ trigger.to_state.state }}"
+          
+  - alias: FM Receiver Frequency Slider Change
+    # Set new frequency on slider change
+    id: 9268c043-2649-42a7-bc74-4e8e43cca926
+    mode: single
+    max_exceeded: silent
+    trigger:
+      platform: state
+      entity_id: input_number.fm_receiver_frequency
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "cmnd/fmrecvr/frequency"
+          payload: "{{ ((trigger.to_state.state |float(0)) * 100) | int(0) }}"
+          
+  - alias: FM Receiver Frequency Manual Entry
+    id: 28b8657e-94d6-420f-8137-9a336367e052
+    mode: single
+    max_exceeded: silent
+    trigger:
+      platform: state
+      entity_id: input_text.fm_receiver_frequency 
+    condition: 
+      - condition: template
+        value_template: "{{ ((trigger.to_state.state | float(0) * 100 | int(0)) > 8749) and ((trigger.to_state.state | float(0) * 100 | int(0)) < 10791) }}"
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "cmnd/fmrecvr/frequency"
+          payload: "{{ ((trigger.to_state.state |float(0)) * 100) | int(0) }}"
+      - service: input_text.set_value
+        target: 
+          entity_id: input_text.fm_receiver_frequency
+        data:
+          value: ''
+
+  - alias: FM Receiver Volume Get
+    id: 70a534c2-c5a8-4798-a4f5-28e2f91e8986
+    trigger:
+      platform: state
+      entity_id: sensor.fm_receiver_volume
+    action:
+      service: input_number.set_value
+      target:
+        entity_id: input_number.fm_receiver_volume
+      data:
+        value: "{{ trigger.to_state.state | int(0) }}"
+
+  - alias: FM Receiver Volume Set
+    id: d1cb57b7-0c66-4361-a403-8cf0f9821f33
+    trigger:
+      platform: state
+      entity_id: input_number.fm_receiver_volume
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "cmnd/fmrecvr/volume"
+          payload: "{{ trigger.to_state.state | int(0) }}"
+
+# =======================
+#  Scripts
+# =======================
+script:
+  fm_receiver_previous_preset:
+    alias: FM Receiver Previous Preset
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "cmnd/fmrecvr/preset_down"
+          payload: "1"
+
+  fm_receiver_next_preset:
+    alias: FM Receiver Next Preset
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "cmnd/fmrecvr/preset_up"
+          payload: "1"
+
+  fm_receiver_first_preset:
+    alias: FM Receiver First Preset
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "cmnd/fmrecvr/preset_num"
+          payload: '1'
+
+  fm_receiver_last_preset:
+    alias: FM Receiver Last Preset
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "cmnd/fmrecvr/preset_num"
+          payload: '8'

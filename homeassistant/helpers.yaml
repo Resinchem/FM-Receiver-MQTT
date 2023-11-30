@@ -1,0 +1,32 @@
+# ===========================================
+#  Example YAML for helper entities
+#  for the SI4703 FM Receiver
+#    - These could also be created via the UI
+# ===========================================
+
+# ======================
+#  INPUT NUMBERS
+# ======================
+input_number:
+  fm_receiver_frequency:
+    name: FM Receiver Frequency
+    min: 87.5
+    max: 107.9
+    step: 0.1
+    mode: slider
+
+  fm_receiver_volume:
+    name: FM Receiver Volume
+    min: 0
+    max: 15
+    step: 1
+    mode: slider
+    
+# =====================
+#  INPUT TEXT
+# =====================
+input_text:
+  fm_receiver_frequency:
+    name: FM Receiver Frequency
+    initial: ' '
+

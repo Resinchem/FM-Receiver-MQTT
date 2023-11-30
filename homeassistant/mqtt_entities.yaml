@@ -1,0 +1,154 @@
+# =========================================
+#  Example YAML for Integrating MQTT Topics
+#  for the SI4703 FM Receiver
+# =========================================
+
+# ************************************
+#     MQTT ENTITIES
+# ************************************
+mqtt:
+  # ==================
+  #  SENSORS
+  # ==================
+  sensor:
+    - name: "FM Receiver Volume"
+      state_topic: "stat/fmrecvr/volume"
+      
+    - name: "FM Receiver Frequency"
+      state_topic: "stat/fmrecvr/frequency"
+      
+    - name: "FM Receiver Raw Frequency"
+      state_topic: "stat/fmrecvr/rawfreq"
+      value_template: "{{ ((value | float(0)) / 100.0) | round(1) }}"
+        
+    - name: "FM Receiver IP Address"
+      state_topic: "stat/fmrecvr/ipaddress"
+      
+    - name: "FM Reeciver RDS Name"
+      state_topic: "stat/fmrecvr/rdsname"
+      
+    - name: "FM Receiver RDS Text"
+      state_topic: "stat/fmrecvr/rdstext"
+
+  # ==================
+  #  SWITCHES
+  # ==================
+    - name: "FM Receiver Preset 1"          # 94.7
+      state_topic: "stat/fmrecvr/preset"
+      value_template: "{{ (value | int(0)) == 1 }}"
+      command_topic: "cmnd/fmrecvr/preset_num"
+      payload_on: "1"
+      payload_off: ""
+      state_on: true
+      state_off: false
+      retain: false
+
+    - name: "FM Receiver Preset 2"          # 104.5
+      state_topic: "stat/fmrecvr/preset"
+      value_template: "{{ (value | int(0)) == 2 }}"
+      command_topic: "cmnd/fmrecvr/preset_num"
+      payload_on: "2"
+      payload_off: ""
+      state_on: true
+      state_off: false
+      retain: false
+      
+    - name: "FM Receiver Preset 3"         # 97.1
+      state_topic: "stat/fmrecvr/preset"
+      value_template: "{{ (value | int(0)) == 3 }}"
+      command_topic: "cmnd/fmrecvr/preset_num"
+      payload_on: "3"
+      payload_off: ""
+      state_on: true
+      state_off: false
+      retain: false
+
+    - name: "FM Receiver Preset 4"         # 95.5
+      state_topic: "stat/fmrecvr/preset"
+      value_template: "{{ (value | int(0)) == 4 }}"
+      command_topic: "cmnd/fmrecvr/preset_num"
+      payload_on: "4"
+      payload_off: ""
+      state_on: true
+      state_off: false
+      retain: false
+
+    - name: "FM Receiver Preset 5"         # 99.5
+      state_topic: "stat/fmrecvr/preset"
+      value_template: "{{(value | int(0)) == 5 }}"
+      command_topic: "cmnd/fmrecvr/preset_num"
+      payload_on: "5"
+      payload_off: ""
+      state_on: true
+      state_off: false
+      retain: false
+
+    - name: "FM Receiver Preset 6"         # 93.1
+      state_topic: "stat/fmrecvr/preset"
+      value_template: "{{ (value | int(0)) == 6 }}"
+      command_topic: "cmnd/fmrecvr/preset_num"
+      payload_on: "6"
+      payload_off: ""
+      state_on: true
+      state_off: false
+      retain: false
+
+    - name: "FM Receiver Preset 7"         # 98.3
+      state_topic: "stat/fmrecvr/preset"
+      value_template: "{{ (value | int(0)) == 7 }}"
+      command_topic: "cmnd/fmrecvr/preset_num"
+      payload_on: "7"
+      payload_off: ""
+      state_on: true
+      state_off: false
+      retain: false
+
+    - name: "FM Receiver Preset 8"         # 106.7
+      state_topic: "stat/fmrecvr/preset"
+      value_template: "{{ (value | int(0)) == 8 }}"
+      command_topic: "cmnd/fmrecvr/preset_num"
+      payload_on: "8"
+      payload_off: ""
+      state_on: true
+      state_off: false
+      retain: false
+
+    - name: "FM Receiver Mute"              
+      state_topic: "stat/fmrecvr/mute"
+      value_template: "{{ value == 'on' }}"
+      command_topic: "cmnd/fmrecvr/mute"
+      payload_on: "on"
+      payload_off: "off"
+      state_on: true
+      state_off: false
+      retain: false
+      
+    - name: "FM Receiver Soft Mute"
+      state_topic: "stat/fmrecvr/softmute"
+      value_template: "{{ value == 'on' }}"
+      command_topic: "cmnd/fmrecvr/softmute"
+      payload_on: "on"
+      payload_off: "off"
+      state_on: true
+      state_off: false
+      retain: false
+
+    - name: "FM Receiver Stereo"
+      state_topic: "stat/fmrecvr/stereo"
+      value_template: "{{ value == 'on' }}"
+      command_topic: "cmnd/fmrecvr/stereo"
+      payload_on: "on"
+      payload_off: "off"
+      state_on: true
+      state_off: false
+      retain: false
+
+    - name: "FM Receiver Power"
+      state_topic: "stat/fmrecvr/power"
+      value_template: "{{ value == 'on' }}"
+      command_topic: "cmnd/fmrecvr/power"
+      payload_on: "on"
+      payload_off: "off"
+      state_on: true
+      state_off: false
+      retain: false
