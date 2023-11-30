@@ -13,6 +13,11 @@ Note:  These example use the MQTT topics as defined in the fm-receiver source co
 |helpers.yaml|Helper entities, such as input numbers that can be used in a dashboard
 |mqtt_entities.yaml|Entites such as sensors and switches for the FM receiver
 
+#### Sample Dashboard
+-- IMAGE HA_DASHBOARD_LARGE.jpg --
+
+This is just a sample dashboard.  This version also requires two custom components, installed through the Home Assistant Community store (HACS).  These are listed in the comments at the top of the YAML file.
+
 Automations, scripts and helpers can also be created using the Home Assistant UI Editor, but as of the time of publication MQTT entities can only be created via YAML.
 
 Please see the [Wiki](https://github.com/Resinchem/FM-Receiver-MQTT/wiki) for more details on MQTT and MQTT topics.
