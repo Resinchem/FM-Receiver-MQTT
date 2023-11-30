@@ -1,0 +1,297 @@
+# =====================================================================
+#  This sample dashboard makes use of two custom components
+#  which can be installed from the Home Assistant Community Store (HACS):
+#    Custom Button Card by RomRider: https://github.com/custom-cards/button-card
+#    Text Divider Row by iantrich: https://github.com/iantrich/text-divider-row (v1.4.0)
+# =====================================================================
+
+type: vertical-stack
+cards:
+  - text: FM Receiver SI4703
+    type: custom:text-divider-row
+  - square: false
+    type: grid
+    cards:
+      - aspect_ratio: 1.5/1
+        color: rgb(0,255,0)
+        color_type: card
+        show_icon: true
+        icon: mdi:power
+        entity: switch.fm_receiver_power
+        name: Power Button
+        show_name: false
+        show_label: true
+        state:
+          - color: rgb(0,255,0)
+            value: 'on'
+          - color: rgb(255,0,0)
+            value: 'off'
+        tap_action:
+          action: toggle
+        type: custom:button-card
+    columns: 4
+  - type: entity
+    entity: sensor.fm_receiver_frequency
+    name: 'Currently Playing:'
+    icon: mdi:radio-fm
+  - type: entities
+    entities:
+      - entity: sensor.fm_reeciver_rds_name
+        name: 'Service:'
+      - entity: sensor.fm_receiver_rds_text
+        name: 'Text:'
+  - text: Presets
+    type: custom:text-divider-row
+  - square: false
+    type: grid
+    cards:
+      - aspect_ratio: 1.5/1
+        color: rgb(0,255,158)
+        color_type: card
+        show_icon: false
+        entity: switch.fm_receiver_preset_1
+        name: 94.7
+        label: Q-95
+        show_label: true
+        styles:
+          name:
+            - font-size: 25px
+            - font-weight: bold
+          label:
+            - font-size: 18px
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - aspect_ratio: 1.5/1
+        color: rgb(0,255,158)
+        color_type: card
+        show_icon: false
+        entity: switch.fm_receiver_preset_2
+        name: 104.5
+        label: WJJK
+        show_label: true
+        styles:
+          name:
+            - font-size: 25px
+            - font-weight: bold
+          label:
+            - font-size: 18px
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - aspect_ratio: 1.5/1
+        color: rgb(0,255,158)
+        color_type: card
+        show_icon: false
+        entity: switch.fm_receiver_preset_3
+        name: 97.1
+        label: Hank FM
+        show_label: true
+        styles:
+          name:
+            - font-size: 25px
+            - font-weight: bold
+          label:
+            - font-size: 18px
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - aspect_ratio: 1.5/1
+        color: rgb(0,255,158)
+        color_type: card
+        show_icon: false
+        entity: switch.fm_receiver_preset_4
+        name: 95.5
+        label: WFMS
+        show_label: true
+        styles:
+          name:
+            - font-size: 25px
+            - font-weight: bold
+          label:
+            - font-size: 18px
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - aspect_ratio: 1.5/1
+        color: rgb(0,255,158)
+        color_type: card
+        show_icon: false
+        entity: switch.fm_receiver_preset_5
+        name: 99.5
+        label: WZPL
+        show_label: true
+        styles:
+          name:
+            - font-size: 25px
+            - font-weight: bold
+          label:
+            - font-size: 18px
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - aspect_ratio: 1.5/1
+        color: rgb(0,255,158)
+        color_type: card
+        show_icon: false
+        entity: switch.fm_receiver_preset_6
+        name: 93.1
+        label: WIBC
+        show_label: true
+        styles:
+          name:
+            - font-size: 25px
+            - font-weight: bold
+          label:
+            - font-size: 18px
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - aspect_ratio: 1.5/1
+        color: rgb(0,255,158)
+        color_type: card
+        show_icon: false
+        entity: switch.fm_receiver_preset_7
+        name: 98.3
+        label: WZRL
+        show_label: true
+        styles:
+          name:
+            - font-size: 25px
+            - font-weight: bold
+          label:
+            - font-size: 18px
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - aspect_ratio: 1.5/1
+        color: rgb(0,255,158)
+        color_type: card
+        show_icon: false
+        entity: switch.fm_receiver_preset_8
+        name: 106.7
+        label: WTLC
+        show_label: true
+        styles:
+          name:
+            - font-size: 25px
+            - font-weight: bold
+          label:
+            - font-size: 18px
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - aspect_ratio: 2.3/1
+        name: First Preset
+        card_type: icon
+        show_icon: true
+        show_name: false
+        icon: mdi:chevron-double-left
+        tap_action:
+          action: call-service
+          service: script.fm_receiver_first_preset
+        type: custom:button-card
+      - aspect_ratio: 2.3/1
+        name: Previous Preset
+        show_name: false
+        card_type: icon
+        show_icon: true
+        icon: mdi:chevron-left
+        tap_action:
+          action: call-service
+          service: script.fm_receiver_previous_preset
+        type: custom:button-card
+      - aspect_ratio: 2.3/1
+        name: Next Preset
+        show_name: false
+        card_type: icon
+        show_icon: true
+        icon: mdi:chevron-right
+        tap_action:
+          action: call-service
+          service: script.fm_receiver_next_preset
+        type: custom:button-card
+      - aspect_ratio: 2.3/1
+        name: Last Preset
+        show_name: false
+        card_type: icon
+        show_icon: true
+        icon: mdi:chevron-double-right
+        tap_action:
+          action: call-service
+          service: script.fm_receiver_last_preset
+        type: custom:button-card
+    columns: 4
+  - text: Manual Tuning
+    type: custom:text-divider-row
+  - type: entities
+    entities:
+      - entity: input_number.fm_receiver_frequency
+        name: 'Frequency:'
+        icon: mdi:knob
+      - entity: input_text.fm_receiver_frequency
+        name: Direct Frequency Entry (nnn.n)
+        icon: mdi:numeric
+
+type: vertical-stack
+cards:
+  - text: Audio & Volume Settings
+    type: custom:text-divider-row
+  - square: false
+    type: grid
+    cards:
+      - aspect_ratio: 1.5/1
+        color_type: card
+        show_icon: true
+        icon: mdi:volume-medium
+        entity: switch.fm_receiver_mute
+        name: Mute
+        show_name: ture
+        show_label: true
+        state:
+          - color: rgb(200,200,0)
+            value: 'on'
+            icon: mdi:volume-off
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - aspect_ratio: 1.5/1
+        color_type: card
+        show_icon: true
+        icon: mdi:volume-vibrate
+        entity: switch.fm_receiver_sof_mute
+        name: Soft Mute
+        show_name: ture
+        show_label: true
+        state:
+          - color: rgb(200,200,0)
+            value: 'on'
+        tap_action:
+          action: toggle
+        type: custom:button-card
+      - aspect_ratio: 1.5/1
+        color_type: card
+        show_icon: true
+        icon: mdi:speaker-multiple
+        entity: switch.fm_receiver_stereo
+        name: Stereo
+        show_name: ture
+        show_label: true
+        state:
+          - color: rgb(0,230,0)
+            value: 'on'
+          - icon: mdi:speaker
+            color: rgb(0,100,200)
+            value: 'off'
+            name: Mono
+        tap_action:
+          action: toggle
+        type: custom:button-card
+    columns: 4
+  - type: entities
+    entities:
+      - entity: input_number.fm_receiver_volume
+        icon: mdi:volume-high
+      - entity: sensor.fm_receiver_ip_address
+        name: IP Address
+        icon: mdi:ip
