@@ -25,7 +25,7 @@ The primary purpose of this wrapper is to provide MQTT for integrating the FM Re
 << PHOTO_02_HA_DASHBOARD>>
 
 
-You can see more info on wiring and implmentation in the following YouTube video << ADD LINK >>
+You can see more info on wiring and implmentation in a [YouTube video](https://youtu.be/BJh-vUknn-Q) 
 
 Sample Home Assistant YAML code for implementing MQTT entities and creating the dashboard shown above are included in the /homeassistant folder.
 
