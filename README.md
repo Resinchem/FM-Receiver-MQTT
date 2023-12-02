@@ -10,7 +10,7 @@ The wrapper adds the following functionality:
 
 ### Supported Hardware
 
-This particular version is written specifically for the SI4307 FM Receiver chip.
+This particular version is written specifically for the SI4703 FM Receiver chip.
 
 << PHOTO_01_SI4703 >>
 
