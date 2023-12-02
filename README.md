@@ -12,7 +12,7 @@ The wrapper adds the following functionality:
 
 This particular version is written specifically for the SI4703 FM Receiver chip.
 
-<< PHOTO_01_SI4703 >>
+![SI4703](https://github.com/Resinchem/FM-Receiver-MQTT/assets/55962781/57ae9b03-3bef-4af6-a9a1-4f8f9c92abc2)
 
 But the RADIO library supports a number of other FM boards.  Please see the [RADIO repo](https://github.com/mathertel/Radio) for more information on implementing for other chipsets.  This version utilizes version 3.0.1 of the library, which was the most current at time of publication.  It likely will not be update if future version of the radio library are released.
 
