@@ -14,7 +14,7 @@ Note:  These example use the MQTT topics as defined in the fm-receiver source co
 |mqtt_entities.yaml|Entites such as sensors and switches for the FM receiver
 
 #### Sample Dashboard
--- IMAGE HA_DASHBOARD_LARGE.jpg --
+![HA_Dashboard_Largel](https://github.com/Resinchem/FM-Receiver-MQTT/assets/55962781/fa167b4f-53aa-4f5b-b0d4-8d47dc2886cb)
 
 This is just a sample dashboard.  This version also requires two custom components, installed through the Home Assistant Community store (HACS).  These are listed in the comments at the top of the YAML file.
 
