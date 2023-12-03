@@ -22,7 +22,7 @@ This wrapper version was primarily developed and tested using a Wemos D1 Mini (E
 
 The primary purpose of this wrapper is to provide MQTT for integrating the FM Receiver into Home Assistant (or other compatible MQTT automation system)
 
-<< PHOTO_02_HA_DASHBOARD>>
+![HA_Dashboard_Small](https://github.com/Resinchem/FM-Receiver-MQTT/assets/55962781/0b14a3bb-66ae-4775-adc4-f811f5dcf6f6)
 
 
 You can see more info on wiring and implementation in a [YouTube video](https://youtu.be/BJh-vUknn-Q) 
